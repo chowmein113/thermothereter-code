@@ -61,6 +61,7 @@ Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 float tempObjecC, tempObjecF, tempAmbientC ,tempAmbientF, tempObjecK, tempAmbientK;
 
 void setup() {
+ //pin designated to monitor input voltage of IR sensor
   pinMode(votageInputPin, INPUT);
   Serial.begin(115200);
   // Cereal Code
@@ -94,13 +95,16 @@ void loop() {
   
   //Cereal Code
   sen=getTemp('F');
-    //str=String("Coming from Arduino: ")+String(sen)
+    //get the temperature in farenheit
    str=String(0)+String(sen);
-    //+String("\xC2\xB0")+String('F')+String('\n');
+    //add 0 in frotn of string output beccause first character gets cut off in serial comms,
+ // this should be a bug to fix
+ 
     espSerial.println(str);
+ //send data to the esp to be sent to blynk app
    
    
-    //
+    //might not be necessary 
     delay(10);
   //Robojax Example for MLX90614-DCI medical accuracy long range version
 
@@ -158,7 +162,7 @@ float getTemp(char type)
    }
    return value;
     //Robojax Example for MLX90614-DCI medical accuracy long range version
-}//getTemp
+}
 
 
 
@@ -172,9 +176,7 @@ float getTemp(char type)
 void dependencyComp()
 {
   //Robojax Example for MLX90614-DCI medical accuracy long range version
- // int value = analogRead(votageInputPin);// read the input
-  //float voltage =  value * (arduinoVoltage / 1023.0);//get the voltage from the value above
-  //Serial.println(voltage);
+
   double voltage=getvoltage();
   tempObjecC = tempObjecC - (voltage -3) * 0.6;
   tempAmbientC = tempAmbientC - (voltage -3) * 0.6;  
@@ -281,20 +283,18 @@ void printDegree()
 void printVoltage()
 {
   //Robojax Example for MLX90614-DCI medical accuracy long range version
- // const int value = analogRead(votageInputPin);// read the input
-// int value = getvoltage();
- // const double voltage =  value * (arduinoVoltage / 1023.0);//get the voltage from the value above
+ 
+
  double voltage=getvoltage();
   Serial.print("Voltage: ");
   Serial.print(voltage);  
   Serial.println("V");
   //Robojax Example for MLX90614-DCI medical accuracy long range version
-}// printVoltage()
+}
 double getvoltage(){
-
+//gets the voltage and converts to units in Volts
  double value = analogRead(votageInputPin);
-//String boat=String("analog:")+String(" ")+String(value);
-//Serial.println(boat);
+
   const double voltage =  value * (arduinoVoltage / 1023.0);//get the voltage from the value above
 return voltage;
 }
