@@ -1,3 +1,48 @@
+ /*************************************************** 
+  This is a library example for the MLX90614 Temp Sensor
+Original Library and code source: https://github.com/adafruit/Adafruit-MLX90614-Library
+
+The is Arduino code used from the above library for MLX90614 and have been updated heavily.
+this code to use MLX90614-DCI the long range medical accuracy infrared Temperature sensor to measure
+the temperature with accuracy and compensation of power supply dependancey. 
+Please watch the video for details. We will acheive up to 20cm to 49cm readin range where the 
+object size becomes 4.3cm  or 43mm.
+
+ * 
+ * Watch video instructions for this code: https://youtu.be/jN86PSAHMbw
+updated/written by Ahmad Shamshiri on July 18, 2020, 2020 
+ 
+ * in Ajax, Ontario, Canada. www.robojax.com
+ * 
+
+ * Get this code and other Arduino codes from Robojax.com
+Learn Arduino step by step in structured course with all material, wiring diagram and library
+all in once place. Purchase My course on Udemy.com http://robojax.com/L/?id=62
+
+If you found this tutorial helpful, please support me so I can continue creating 
+content like this. You can support me on Patreon http://robojax.com/L/?id=63
+
+or make donation using PayPal http://robojax.com/L/?id=64
+
+ *  * This code is "AS IS" without warranty or liability. Free to be used as long as you keep this note intact.* 
+ * This code has been download from Robojax.com
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Origin
+  Written by Limor Fried/Ladyada for Adafruit Industries.  
+  BSD license, all text above must be included in any redistribution
+ ****************************************************/
 const int votageInputPin =A0;
 const float arduinoVoltage = 5.0;//Operating voltage of Arduino. either 3.3V or 5.0V 
 #include <Wire.h>
