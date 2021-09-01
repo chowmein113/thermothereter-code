@@ -2,9 +2,9 @@
 
 struct passwordblynk
 {
-const char* ssid= "dog2";
+const char* ssid= "";
 
-const char* pass = "Podrey321!";
+const char* pass = "";
 
 const char* getssid() {return ssid;}
 const char* getpass() { return pass;}
